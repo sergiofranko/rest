@@ -23,7 +23,7 @@ const getInvitadoByName = async (request, response) => {
 
 const saveInvitado = async (request, response) => {
     const {nombre, apellido, confirmar} = request.body;
-    const result = await pool.query(`INSERT INTO invitados(nombre, apellido) VALUES ('${nombre}', '${apellido}', 'false')`);
+    const result = await pool.query(`INSERT INTO invitados(nombre, apellido, confirmar) VALUES ('${nombre}', '${apellido}', 'false')`);
     response.json({
         message: "Invitado ingresado con éxito",
         invitado: {
@@ -45,7 +45,7 @@ const updateInvitado = async (request, response) => {
     const result = await pool.query(`UPDATE invitados SET nombre = '${nombre}', apellido = '${apellido}', confirmar = '${confirmar}' WHERE id = ${id}`)
     response.json({
         message: "Invitado actualizado con éxito",
-        ivitado: {
+        invitado: {
             nombre: nombre,
             apellido: apellido,
             confirmar: confirmar
