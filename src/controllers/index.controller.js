@@ -2,8 +2,6 @@ const { response } = require('express');
 const { Pool } = require('pg');
 const keys = require('../config/keys.js');
 
-console.log(keys);
-
 const pool = new Pool(keys.postgres);
 
 const getInvitados = async (request, response) => {
