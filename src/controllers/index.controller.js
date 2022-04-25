@@ -4,7 +4,7 @@ const keys = require('../config/keys.js');
 
 console.log(keys);
 
-const pool = new Pool(keys);
+const pool = new Pool(keys.postgres);
 
 const getInvitados = async (request, response) => {
     const result = await pool.query('SELECT * FROM invitados');
