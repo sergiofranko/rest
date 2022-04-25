@@ -1,13 +1,10 @@
 const { response } = require('express');
 const { Pool } = require('pg');
+const keys = requere('../config/keys.js');
 
-const pool = new Pool({
-    host: 'localhost',
-    user: 'postgres',
-    password: 'postgresDbBoda',
-    database: 'boda',
-    port:'5432'
-});
+console.log(keys);
+
+const pool = new Pool(keys);
 
 const getInvitados = async (request, response) => {
     const result = await pool.query('SELECT * FROM invitados');
