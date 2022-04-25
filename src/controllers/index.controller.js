@@ -1,6 +1,6 @@
 const { response } = require('express');
 const { Pool } = require('pg');
-const keys = requere('../config/keys.js');
+const keys = require('../config/keys.js');
 
 console.log(keys);
 
