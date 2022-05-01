@@ -16,6 +16,12 @@ const getInvitadoByName = async (request, response) => {
     response.json(result.rows);
 }
 
+const getInvitadoByConfirm = async (request, response) => {
+    const param = request.params.param;
+    const result = await pool.query(`SELECT * FROM invitados WHERE confirmar = '${param}' ORDER BY nombre ASC`);
+    response.json(result.rows);
+}
+
 const saveInvitado = async (request, response) => {
     const {nombre, apellido, confirmar} = request.body;
     const result = await pool.query(`INSERT INTO invitados(nombre, apellido, confirmar) VALUES ('${nombre}', '${apellido}', 'false')`);
@@ -51,6 +57,7 @@ const updateInvitado = async (request, response) => {
 module.exports = {
     getInvitados,
     getInvitadoByName,
+    getInvitadoByConfirm,
     saveInvitado,
     updateInvitado,
     deleteInvitado
